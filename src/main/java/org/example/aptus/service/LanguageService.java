@@ -1,6 +1,6 @@
 package org.example.aptus.service;
 
-
+import lombok.RequiredArgsConstructor;
 import org.example.aptus.dto.LanguageResponse;
 import org.example.aptus.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
@@ -9,13 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class LanguageService {
 
     private final QuestionRepository questionRepository;
-
-    public LanguageService(QuestionRepository questionRepository) {
-        this.questionRepository = questionRepository;
-    }
 
     /**
      * Retrieves all distinct language names available

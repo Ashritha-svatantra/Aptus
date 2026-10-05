@@ -17,12 +17,6 @@ public class AssessmentConfigurationService {
 
     public AssessmentSettings getSettings(String source) {
 
-        if (source == null || source.isBlank()) {
-            throw new IllegalArgumentException(
-                    "Assessment source is required"
-            );
-        }
-
         String normalizedSource =
                 source.trim().toUpperCase(Locale.ROOT);
 
