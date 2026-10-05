@@ -1,23 +1,17 @@
 package org.example.aptus.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class LanguageResponse {
 
     private List<String> languages;
-
-    public LanguageResponse() {
-    }
-
-    public LanguageResponse(List<String> languages) {
-        this.languages = languages;
-    }
-
-    public List<String> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(List<String> languages) {
-        this.languages = languages;
-    }
 }

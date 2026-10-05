@@ -3,8 +3,8 @@ package org.example.aptus.service;
 
 import org.example.aptus.config.AssessmentSettings;
 import org.example.aptus.dto.AssessmentQuestionResponse;
-import org.example.aptus.dto.StartAssessmentRequest;
-import org.example.aptus.dto.StartAssessmentResponse;
+import org.example.aptus.dto.GenerateAssessmentRequest;
+import org.example.aptus.dto.GenerateAssessmentResponse;
 import org.example.aptus.entity.Question;
 import org.example.aptus.entity.QuestionPaperAudit;
 import org.example.aptus.entity.QuestionPaperStatus;
@@ -23,13 +23,13 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class AssessmentStartService {
+public class AssessmentGenerationService {
 
     private final QuestionRepository questionRepository;
     private final QuestionPaperAuditRepository auditRepository;
     private final AssessmentConfigurationService configurationService;
 
-    public AssessmentStartService(
+    public AssessmentGenerationService(
             QuestionRepository questionRepository,
             QuestionPaperAuditRepository auditRepository,
             AssessmentConfigurationService configurationService) {
@@ -40,8 +40,8 @@ public class AssessmentStartService {
     }
 
     @Transactional
-    public StartAssessmentResponse startAssessment(
-            StartAssessmentRequest request,
+    public GenerateAssessmentResponse startAssessment(
+            GenerateAssessmentRequest request,
             Long adminId) {
 
         // 1. Validate the request.
@@ -289,8 +289,8 @@ public class AssessmentStartService {
                 auditRepository.save(audit);
 
         // 10. Return audit ID and candidate-facing questions.
-        StartAssessmentResponse response =
-                new StartAssessmentResponse();
+        GenerateAssessmentResponse response =
+                new GenerateAssessmentResponse();
 
         response.setAuditId(savedAudit.getAuditId());
         response.setQuestions(responseQuestions);
