@@ -14,7 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import org.example.aptus.entity.QuestionPaperStatus;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -43,7 +42,7 @@ public class QuestionPaperAudit {
     @Column(name = "audit_id")
     private Long auditId;
 
-    @Column(name = "admin_id", nullable = false)
+    @Column(name = "admin_id")
     private Long adminId;
 
     @Column(name = "candidate_id", nullable = false)
@@ -53,7 +52,11 @@ public class QuestionPaperAudit {
     private String candidateName;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name = "questions", columnDefinition = "jsonb", nullable = false)
+    @Column(
+            name = "questions",
+            columnDefinition = "jsonb",
+            nullable = false
+    )
     private List<Map<String, Object>> questions;
 
     @Column(name = "created_at", nullable = false)
@@ -67,8 +70,13 @@ public class QuestionPaperAudit {
 
     @Enumerated(EnumType.STRING)
     @JdbcTypeCode(SqlTypes.NAMED_ENUM)
-    @Column(name = "status", nullable = false, columnDefinition = "question_paper_status")
-    private QuestionPaperStatus status = QuestionPaperStatus.CREATED;
+    @Column(
+            name = "status",
+            nullable = false,
+            columnDefinition = "question_paper_status"
+    )
+    private QuestionPaperStatus status =
+            QuestionPaperStatus.CREATED;
 
     @Column(name = "duration_minutes", nullable = false)
     private Integer durationMinutes = 0;
